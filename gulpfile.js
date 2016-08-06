@@ -2,6 +2,7 @@ const gulp         = require('gulp');
 const runSequence  = require('run-sequence');
 const babel        = require('gulp-babel');
 const jshint       = require('gulp-jshint');
+const jasmineTests = require('gulp-jasmine');
 const browserify   = require('browserify');
 const sourceStream = require('vinyl-source-stream');
 const buffer       = require('vinyl-buffer');
@@ -28,7 +29,13 @@ gulp.task('js', () => {
 });
 
 gulp.task('jshint:js', () => {
-  return gulp.src('app/js/**/*.js')
+  return gulp.src(['app/js/**/*.js'])
+    .pipe(jshint('.jshintrc'))
+    .pipe(jshint.reporter('default'));
+});
+
+gulp.task('jshint:js:tests', () => {
+  return gulp.src(['tests/**/*.js'])
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'));
 });
@@ -39,12 +46,13 @@ gulp.task('jshint:gulpfile', () => {
     .pipe(jshint.reporter('default'));
 });
 
-gulp.task('jshint', ['jshint:gulpfile', 'jshint:js']);
+gulp.task('jshint', ['jshint:gulpfile', 'jshint:js', 'jshint:js:tests']);
 
 gulp.task('watch', () => {
   gulp.watch('app/html/index.html', ['html']);
   gulp.watch('app/scss/index.scss', ['sass']);
-  gulp.watch('app/js/index.js', ['jshint:js', 'js']);
+  gulp.watch('app/js/index.js', ['js:build-and-test']);
+  gulp.watch('tests/**/*-test.js', ['jshint:js:tests', 'test']);
   gulp.watch('gulpfile.js', ['jshint:gulpfile']);
 });
 
@@ -54,4 +62,13 @@ gulp.task('clean:dist', () => {
 
 gulp.task('build', (callback) => {
   runSequence('clean:dist', ['html', 'sass', 'jshint', 'js'], callback);
+});
+
+gulp.task('test', () => {
+  return gulp.src('tests/**/*-test.js')
+    .pipe(jasmineTests());
+});
+
+gulp.task('js:build-and-test', (callback) => {
+  runSequence(['jshint:js', 'jshint:js:tests', 'js'], 'test', callback);
 });
