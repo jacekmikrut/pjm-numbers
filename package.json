@@ -1,0 +1,21 @@
+{
+  "name": "pjm-numbers",
+  "version": "1.0.0",
+  "description": "A webpage for training number signs in PJM.",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "author": "Jacek Mikrut",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.13.2",
+    "browserify": "^13.1.0",
+    "del": "^2.2.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-sass": "^2.3.2",
+    "run-sequence": "^1.2.2",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
