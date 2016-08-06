@@ -1,6 +1,7 @@
 const gulp         = require('gulp');
 const runSequence  = require('run-sequence');
 const babel        = require('gulp-babel');
+const jshint       = require('gulp-jshint');
 const browserify   = require('browserify');
 const sourceStream = require('vinyl-source-stream');
 const buffer       = require('vinyl-buffer');
@@ -26,10 +27,25 @@ gulp.task('js', () => {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('jshint:js', () => {
+  return gulp.src('app/js/**/*.js')
+    .pipe(jshint('.jshintrc'))
+    .pipe(jshint.reporter('default'));
+});
+
+gulp.task('jshint:gulpfile', () => {
+  return gulp.src('gulpfile.js')
+    .pipe(jshint('.jshintrc'))
+    .pipe(jshint.reporter('default'));
+});
+
+gulp.task('jshint', ['jshint:gulpfile', 'jshint:js']);
+
 gulp.task('watch', () => {
   gulp.watch('app/html/index.html', ['html']);
   gulp.watch('app/scss/index.scss', ['sass']);
-  gulp.watch('app/js/index.js', ['js']);
+  gulp.watch('app/js/index.js', ['jshint:js', 'js']);
+  gulp.watch('gulpfile.js', ['jshint:gulpfile']);
 });
 
 gulp.task('clean:dist', () => {
@@ -37,5 +53,5 @@ gulp.task('clean:dist', () => {
 });
 
 gulp.task('build', (callback) => {
-  runSequence('clean:dist', ['html', 'sass', 'js'], callback);
+  runSequence('clean:dist', ['html', 'sass', 'jshint', 'js'], callback);
 });
