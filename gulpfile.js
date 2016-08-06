@@ -9,18 +9,18 @@ const buffer       = require('vinyl-buffer');
 const sass         = require('gulp-sass');
 const del          = require('del');
 
-gulp.task('html', () => {
+gulp.task('build:html', () => {
   return gulp.src('app/html/index.html')
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('sass', () => {
+gulp.task('build:sass', () => {
   return gulp.src('app/scss/index.scss')
     .pipe(sass())
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('js', () => {
+gulp.task('build:js', () => {
   return browserify('app/js/index.js').bundle()
     .pipe(sourceStream('index.js'))
     .pipe(buffer())
@@ -28,13 +28,13 @@ gulp.task('js', () => {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('jshint:js', () => {
+gulp.task('jshint:app', () => {
   return gulp.src(['app/js/**/*.js'])
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'));
 });
 
-gulp.task('jshint:js:tests', () => {
+gulp.task('jshint:tests', () => {
   return gulp.src(['tests/**/*.js'])
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'));
@@ -46,13 +46,13 @@ gulp.task('jshint:gulpfile', () => {
     .pipe(jshint.reporter('default'));
 });
 
-gulp.task('jshint', ['jshint:gulpfile', 'jshint:js', 'jshint:js:tests']);
+gulp.task('jshint', ['jshint:gulpfile', 'jshint:app', 'jshint:tests']);
 
 gulp.task('watch', () => {
-  gulp.watch('app/html/index.html', ['html']);
-  gulp.watch('app/scss/index.scss', ['sass']);
-  gulp.watch('app/js/index.js', ['js:build-and-test']);
-  gulp.watch('tests/**/*-test.js', ['jshint:js:tests', 'test']);
+  gulp.watch('app/html/index.html', ['build:html']);
+  gulp.watch('app/scss/index.scss', ['build:sass']);
+  gulp.watch('app/js/index.js', ['build-and-test']);
+  gulp.watch('tests/**/*-test.js', ['jshint:tests', 'test']);
   gulp.watch('gulpfile.js', ['jshint:gulpfile']);
 });
 
@@ -61,7 +61,7 @@ gulp.task('clean:dist', () => {
 });
 
 gulp.task('build', (callback) => {
-  runSequence('clean:dist', ['html', 'sass', 'jshint', 'js'], callback);
+  runSequence('clean:dist', ['build:html', 'build:sass', 'jshint', 'build:js'], callback);
 });
 
 gulp.task('test', () => {
@@ -69,6 +69,6 @@ gulp.task('test', () => {
     .pipe(jasmineTests());
 });
 
-gulp.task('js:build-and-test', (callback) => {
-  runSequence(['jshint:js', 'jshint:js:tests', 'js'], 'test', callback);
+gulp.task('build-and-test', (callback) => {
+  runSequence(['jshint:app', 'jshint:tests', 'build:js'], 'test', callback);
 });
