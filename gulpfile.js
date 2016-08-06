@@ -50,8 +50,8 @@ gulp.task('jshint', ['jshint:gulpfile', 'jshint:app', 'jshint:tests']);
 
 gulp.task('watch', () => {
   gulp.watch('app/html/index.html', ['build:html']);
-  gulp.watch('app/scss/index.scss', ['build:sass']);
-  gulp.watch('app/js/index.js', ['build-and-test']);
+  gulp.watch('app/scss/**/*.scss', ['build:sass']);
+  gulp.watch('app/js/**/*.js', ['build-and-test']);
   gulp.watch('tests/**/*-test.js', ['jshint:tests', 'test']);
   gulp.watch('gulpfile.js', ['jshint:gulpfile']);
 });
