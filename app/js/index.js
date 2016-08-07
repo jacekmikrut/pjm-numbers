@@ -1,5 +1,6 @@
 const NumberSettingsToPoolConverter = require('./number-settings-to-pool-converter.js');
 const NumberGenerator     = require('./number-generator.js');
+const ChangingNumberGenerator = require('./changing-number-generator.js');
 const NumberView          = require('./number-view.js');
 const NumberPrompter      = require('./number-prompter.js');
 const NumberPromptTrigger = require('./number-prompt-trigger.js');
@@ -13,8 +14,9 @@ const INITIALLY_SELECTED_NUMBERS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
 function init() {
   const numberSettingsToPoolConverter = new NumberSettingsToPoolConverter();
   const numberGenerator = new NumberGenerator({ numbersPool: numberSettingsToPoolConverter.convert(INITIALLY_SELECTED_NUMBERS) });
+  const changingNumberGenerator = new ChangingNumberGenerator({ numberGenerator });
   const numberView = new NumberView(document.querySelector('#section-number'));
-  const numberPrompter = new NumberPrompter({ numberGenerator, numberView });
+  const numberPrompter = new NumberPrompter({ numberGenerator: changingNumberGenerator, numberView });
   const numberPromptTrigger = new NumberPromptTrigger({ numberPrompter });
 
   new PromptIntervalSettingsView({
@@ -32,7 +34,7 @@ function init() {
     numberSettingsView,
     selectedNumbers: INITIALLY_SELECTED_NUMBERS,
     numberSettingsToPoolConverter,
-    onNumberSelectionChange: (numbersPool) => numberGenerator.setNumbersPool(numbersPool)
+    onNumberSelectionChange: (numbersPool) => changingNumberGenerator.setNumbersPool(numbersPool)
   });
 
   numberPromptTrigger.triggerNow();

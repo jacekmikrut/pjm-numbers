@@ -14,6 +14,10 @@ class NumberGenerator {
   generate() {
     return this.numbersPool[this.randomIntegerGenerator.generate(0, this.numbersPool.length - 1)];
   }
+
+  hasMultipleNumbersInPool() {
+    return this.numbersPool.length > 1;
+  }
 }
 
 module.exports = NumberGenerator;
