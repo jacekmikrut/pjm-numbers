@@ -1,7 +1,12 @@
+$gray-1: #777;
+$gray-2: #999;
+$gray-3: #ddd;
+$gray-4: #fff;
+
 html, body {
   margin: 0;
   height: 100%;
-  background-color: #fff;
+  background-color: $gray-4;
   font-size: 10px;
 }
 
@@ -11,7 +16,7 @@ html, body {
   justify-content: center;
   align-items: center;
   font-size: 30vw;
-  color: #777;
+  color: $gray-1;
 }
 
 #section-settings {
@@ -34,18 +39,18 @@ html, body {
     clear: none;
     width: 50px;
     margin: 3px;
-    background-color: #ddd;
-    border: solid 2px #ddd;
+    background-color: $gray-3;
+    border: solid 2px $gray-3;
     border-radius: 8px;
-    color: #999;
+    color: $gray-2;
     font-size: 14px;
     padding: 3px;
     cursor: pointer;
 
     &.selected {
-      color: #fff;
-      background-color: #999;
-      border-color: #999;
+      color: $gray-4;
+      background-color: $gray-2;
+      border-color: $gray-2;
     }
   }
 }
