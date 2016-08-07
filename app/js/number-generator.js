@@ -2,14 +2,17 @@ const RandomIntegerGenerator = require('./random-integer-generator.js');
 
 class NumberGenerator {
 
-  constructor({ min, max }) {
+  constructor({ numbersPool }) {
     this.randomIntegerGenerator = new RandomIntegerGenerator();
-    this.min = min;
-    this.max = max;
+    this.setNumbersPool(numbersPool);
+  }
+
+  setNumbersPool(numbersPool) {
+    this.numbersPool = numbersPool;
   }
 
   generate() {
-    return this.randomIntegerGenerator.generate(this.min, this.max);
+    return this.numbersPool[this.randomIntegerGenerator.generate(0, this.numbersPool.length - 1)];
   }
 }
 

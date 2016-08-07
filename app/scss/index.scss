@@ -18,23 +18,28 @@ html, body {
   float: right;
 }
 
-#section-prompt-interval-settings {
-  width: 220px;
+#section-prompt-interval-settings,
+#section-number-settings {
+  width: 168px;
   padding: 5px;
   display: flex;
   flex-wrap: wrap;
 
+  section {
+    align-self: flex-end;
+  }
+
   button {
     display: block;
     clear: none;
-    width: 100px;
-    margin: 5px;
+    width: 50px;
+    margin: 3px;
     background-color: #fff;
     border: solid 2px #ccc;
     border-radius: 8px;
     color: #aaa;
-    font-size: 15px;
-    padding: 5px;
+    font-size: 14px;
+    padding: 3px;
     cursor: pointer;
 
     &.selected {
