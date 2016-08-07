@@ -11,7 +11,7 @@ html, body {
   justify-content: center;
   align-items: center;
   font-size: 30vw;
-  color: #555;
+  color: #777;
 }
 
 #section-settings {
@@ -34,18 +34,18 @@ html, body {
     clear: none;
     width: 50px;
     margin: 3px;
-    background-color: #fff;
-    border: solid 2px #ccc;
+    background-color: #ddd;
+    border: solid 2px #ddd;
     border-radius: 8px;
-    color: #aaa;
+    color: #999;
     font-size: 14px;
     padding: 3px;
     cursor: pointer;
 
     &.selected {
       color: #fff;
-      background-color: #aaa;
-      border-color: #aaa;
+      background-color: #999;
+      border-color: #999;
     }
   }
 }
