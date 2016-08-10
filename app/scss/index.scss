@@ -54,3 +54,24 @@ html, body {
     }
   }
 }
+
+button[data-tooltip] {
+
+  &:hover {
+    position: relative;
+
+    &:after {
+      content: attr(data-tooltip);
+      padding: 3px;
+      position: absolute;
+      right: 0;
+      top: -2px;
+      white-space: nowrap;
+      z-index: 100;
+      background-color: inherit;
+      color: inherit;
+      border: inherit;
+      border-radius: inherit;
+    }
+  }
+}
