@@ -1,6 +1,6 @@
 const PromptTriggerData = require('./prompt-trigger-data.js');
 
-class PromptTriggerButtonView {
+class PromptTriggerSettingsButtonView {
 
   constructor({ buttonElement, onClick }) {
     this.buttonElement = buttonElement;
@@ -20,4 +20,4 @@ class PromptTriggerButtonView {
   }
 }
 
-module.exports = PromptTriggerButtonView;
+module.exports = PromptTriggerSettingsButtonView;
