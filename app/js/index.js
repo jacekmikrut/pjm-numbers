@@ -2,6 +2,7 @@ const NumberSettingsToPoolConverter = require('./number-settings-to-pool-convert
 const NumberGenerator     = require('./number-generator.js');
 const ChangingNumberGenerator = require('./changing-number-generator.js');
 const NumberView          = require('./number-view.js');
+const PromptTriggerButtonView = require('./prompt-trigger-button-view.js');
 const NumberPrompter      = require('./number-prompter.js');
 const NumberPromptTrigger = require('./number-prompt-trigger.js');
 const PromptTriggerType   = require('./prompt-trigger-type.js');
@@ -22,6 +23,11 @@ function init() {
   const numberPrompter = new NumberPrompter({ numberGenerator: changingNumberGenerator, numberView });
   const numberPromptTrigger = new NumberPromptTrigger({ numberPrompter });
   const initialPromptTriggerData = new PromptTriggerData({ type: INITIAL_PROMPT_TRIGGER_TYPE, value: INITIAL_PROMPT_TRIGGER_VALUE });
+
+  new PromptTriggerButtonView({
+    buttonElement: document.querySelector('#section-manual-prompt-trigger'),
+    onClick: () => numberPromptTrigger.triggerNow()
+  });
 
   new PromptTriggerSettingsView({
     containerElement: document.querySelector('#section-prompt-trigger-settings'),

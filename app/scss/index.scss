@@ -10,13 +10,46 @@ html, body {
   font-size: 10px;
 }
 
-#section-number {
+#section-number-and-manual-trigger {
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: column;
+}
+
+#section-number {
+  height: 70%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 30vw;
   color: $gray-1;
+}
+
+#section-manual-prompt-trigger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $gray-3;
+  text-align: center;
+
+  button {
+    width: 80%;
+    margin: 3px;
+    background-color: $gray-3;
+    border: solid 2px $gray-3;
+    border-radius: 16px;
+    color: $gray-2;
+    font-size: 3vw;
+    padding: 20px;
+
+    &:active {
+      color: $gray-4;
+      background-color: $gray-2;
+      border-color: $gray-2;
+    }
+  }
 }
 
 #section-settings {
@@ -35,8 +68,6 @@ html, body {
   }
 
   button {
-    display: block;
-    clear: none;
     width: 50px;
     margin: 3px;
     background-color: $gray-3;
@@ -45,7 +76,6 @@ html, body {
     color: $gray-2;
     font-size: 14px;
     padding: 3px;
-    cursor: pointer;
 
     &.selected {
       color: $gray-4;
@@ -53,6 +83,12 @@ html, body {
       border-color: $gray-2;
     }
   }
+}
+
+button {
+  display: block;
+  clear: none;
+  cursor: pointer;
 }
 
 button[data-tooltip] {
