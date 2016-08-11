@@ -1,5 +1,6 @@
 const PromptTriggerType = Object.freeze({
-  INTERVAL: 'interval'
+  INTERVAL: 'interval',
+  MANUAL:   'manual'
 });
 
 module.exports = PromptTriggerType;

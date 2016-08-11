@@ -4,10 +4,13 @@ const ChangingNumberGenerator = require('./changing-number-generator.js');
 const NumberView          = require('./number-view.js');
 const PromptTriggerButtonView = require('./prompt-trigger-button-view.js');
 const NumberPrompter      = require('./number-prompter.js');
+const PromptTriggerManualStrategy   = require('./prompt-trigger-manual-strategy.js');
+const PromptTriggerIntervalStrategy = require('./prompt-trigger-interval-strategy.js');
 const NumberPromptTrigger = require('./number-prompt-trigger.js');
 const PromptTriggerType   = require('./prompt-trigger-type.js');
 const PromptTriggerData   = require('./prompt-trigger-data.js');
 const PromptTriggerSettingsView = require('./prompt-trigger-settings-view.js');
+const ManualPromptTriggerSectionView = require('./manual-prompt-trigger-section-view.js');
 const NumberSettings      = require('./number-settings.js');
 const NumberSettingsView  = require('./number-settings-view.js');
 
@@ -21,7 +24,16 @@ function init() {
   const changingNumberGenerator = new ChangingNumberGenerator({ numberGenerator });
   const numberView = new NumberView(document.querySelector('#section-number'));
   const numberPrompter = new NumberPrompter({ numberGenerator: changingNumberGenerator, numberView });
-  const numberPromptTrigger = new NumberPromptTrigger({ numberPrompter });
+  const manualPromptTriggerSectionView = new ManualPromptTriggerSectionView({
+    element: document.querySelector('#section-manual-prompt-trigger')
+  });
+  const numberPromptTrigger = new NumberPromptTrigger({
+    numberPrompter,
+    promptTriggerStrategies: [
+      new PromptTriggerManualStrategy({ manualPromptTriggerSectionView }),
+      new PromptTriggerIntervalStrategy()
+    ]
+  });
   const initialPromptTriggerData = new PromptTriggerData({ type: INITIAL_PROMPT_TRIGGER_TYPE, value: INITIAL_PROMPT_TRIGGER_VALUE });
 
   new PromptTriggerButtonView({
