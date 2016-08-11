@@ -1,4 +1,4 @@
-class PromptIntervalButtonView {
+class PromptTriggerButtonView {
 
   constructor({ buttonElement, onClick }) {
     this.buttonElement = buttonElement;
@@ -15,4 +15,4 @@ class PromptIntervalButtonView {
   }
 }
 
-module.exports = PromptIntervalButtonView;
+module.exports = PromptTriggerButtonView;
