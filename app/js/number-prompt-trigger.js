@@ -4,9 +4,9 @@ class NumberPromptTrigger {
     this.numberPrompter = numberPrompter;
   }
 
-  triggerPeriodically(period) {
+  setPromptTriggerData(promptTriggerData) {
     if (this.intervalId) { clearInterval(this.intervalId); }
-    this.intervalId = setInterval(() => this.triggerNow(), period);
+    this.intervalId = setInterval(() => this.triggerNow(), promptTriggerData.value);
   }
 
   triggerNow() {

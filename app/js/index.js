@@ -26,7 +26,7 @@ function init() {
   new PromptTriggerSettingsView({
     containerElement: document.querySelector('#section-prompt-trigger-settings'),
     initialPromptTriggerData,
-    onPromptTriggerDataSelected: (promptTriggerData) => numberPromptTrigger.triggerPeriodically(promptTriggerData.value) });
+    onPromptTriggerDataSelected: (promptTriggerData) => numberPromptTrigger.setPromptTriggerData(promptTriggerData) });
 
   const numberSettingsView = new NumberSettingsView({
     containerElement: document.querySelector('#section-number-settings'),
@@ -42,7 +42,7 @@ function init() {
   });
 
   numberPromptTrigger.triggerNow();
-  numberPromptTrigger.triggerPeriodically(initialPromptTriggerData.value);
+  numberPromptTrigger.setPromptTriggerData(initialPromptTriggerData);
 }
 
 document.addEventListener('DOMContentLoaded', init);
