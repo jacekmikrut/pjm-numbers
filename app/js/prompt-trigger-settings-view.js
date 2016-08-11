@@ -6,15 +6,15 @@ class PromptTriggerSettingsView {
     this.onPromptTriggerDataSelected = onPromptTriggerDataSelected;
 
     this.promptTriggerButtonViews = Array.from(containerElement.querySelectorAll('button')).map((buttonElement) => {
-      return new PromptTriggerButtonView({ buttonElement, onClick: (promptTriggerButtonView) => this.onPromptTriggerButtonClicked(promptTriggerButtonView) });
+      return new PromptTriggerButtonView({ buttonElement, onClick: (promptTriggerData) => this.onPromptTriggerButtonClicked(promptTriggerData) });
     });
 
     this.selectPromptTriggerData(initialPromptTriggerData);
   }
 
-  onPromptTriggerButtonClicked(clickedPromptTriggerButtonView) {
-    this.selectPromptTriggerData(clickedPromptTriggerButtonView.promptTriggerData);
-    this.onPromptTriggerDataSelected(clickedPromptTriggerButtonView.promptTriggerData);
+  onPromptTriggerButtonClicked(promptTriggerData) {
+    this.selectPromptTriggerData(promptTriggerData);
+    this.onPromptTriggerDataSelected(promptTriggerData);
   }
 
   selectPromptTriggerData(promptTriggerData) {
