@@ -1,8 +1,11 @@
+const PromptTriggerData = require('./prompt-trigger-data.js');
+const PromptTriggerType = require('./prompt-trigger-type.js');
+
 class PromptTriggerButtonView {
 
   constructor({ buttonElement, onClick }) {
     this.buttonElement = buttonElement;
-    this.promptInterval = Number(this.buttonElement.getAttribute('data-prompt-interval'));
+    this.promptTriggerData = new PromptTriggerData({ type: PromptTriggerType.INTERVAL, value: Number(this.buttonElement.getAttribute('data-prompt-interval')) });
     this.buttonElement.addEventListener('click', () => { this.buttonElement.blur(); onClick(this); });
   }
 

@@ -2,24 +2,24 @@ const PromptTriggerButtonView = require('./prompt-trigger-button-view.js');
 
 class PromptTriggerSettingsView {
 
-  constructor({ containerElement, onPromptIntervalSelected, initialPromptInterval }) {
-    this.onPromptIntervalSelected = onPromptIntervalSelected;
+  constructor({ containerElement, onPromptTriggerDataSelected, initialPromptTriggerData }) {
+    this.onPromptTriggerDataSelected = onPromptTriggerDataSelected;
 
     this.promptTriggerButtonViews = Array.from(containerElement.querySelectorAll('button')).map((buttonElement) => {
       return new PromptTriggerButtonView({ buttonElement, onClick: (promptTriggerButtonView) => this.onPromptTriggerButtonClicked(promptTriggerButtonView) });
     });
 
-    this.selectPromptInterval(initialPromptInterval);
+    this.selectPromptTriggerData(initialPromptTriggerData);
   }
 
   onPromptTriggerButtonClicked(clickedPromptTriggerButtonView) {
-    this.selectPromptInterval(clickedPromptTriggerButtonView.promptInterval);
-    this.onPromptIntervalSelected(clickedPromptTriggerButtonView.promptInterval);
+    this.selectPromptTriggerData(clickedPromptTriggerButtonView.promptTriggerData);
+    this.onPromptTriggerDataSelected(clickedPromptTriggerButtonView.promptTriggerData);
   }
 
-  selectPromptInterval(promptInterval) {
+  selectPromptTriggerData(promptTriggerData) {
     for (const promptTriggerButtonView of this.promptTriggerButtonViews) {
-      if (promptTriggerButtonView.promptInterval === promptInterval) {
+      if (promptTriggerButtonView.promptTriggerData.isEqual(promptTriggerData)) {
         promptTriggerButtonView.setSelected();
       }
       else {
