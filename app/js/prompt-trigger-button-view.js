@@ -5,7 +5,7 @@ class PromptTriggerButtonView {
 
   constructor({ buttonElement, onClick }) {
     this.buttonElement = buttonElement;
-    this.promptTriggerData = new PromptTriggerData({ type: PromptTriggerType.INTERVAL, value: Number(this.buttonElement.getAttribute('data-prompt-interval')) });
+    this.promptTriggerData = new PromptTriggerData({ type: PromptTriggerType.INTERVAL, value: Number(this.buttonElement.getAttribute('data-prompt-trigger-value')) });
     this.buttonElement.addEventListener('click', () => { this.buttonElement.blur(); onClick(this); });
   }
 
