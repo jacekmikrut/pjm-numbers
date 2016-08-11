@@ -1,6 +1,6 @@
 const PromptIntervalButtonView = require('./prompt-interval-button-view.js');
 
-class PromptIntervalSettingsView {
+class PromptTriggerSettingsView {
 
   constructor({ containerElement, onPromptIntervalSelected, initialPromptInterval }) {
     this.onPromptIntervalSelected = onPromptIntervalSelected;
@@ -29,4 +29,4 @@ class PromptIntervalSettingsView {
   }
 }
 
-module.exports = PromptIntervalSettingsView;
+module.exports = PromptTriggerSettingsView;

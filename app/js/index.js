@@ -4,7 +4,7 @@ const ChangingNumberGenerator = require('./changing-number-generator.js');
 const NumberView          = require('./number-view.js');
 const NumberPrompter      = require('./number-prompter.js');
 const NumberPromptTrigger = require('./number-prompt-trigger.js');
-const PromptIntervalSettingsView = require('./prompt-interval-settings-view.js');
+const PromptTriggerSettingsView = require('./prompt-trigger-settings-view.js');
 const NumberSettings      = require('./number-settings.js');
 const NumberSettingsView  = require('./number-settings-view.js');
 
@@ -19,8 +19,8 @@ function init() {
   const numberPrompter = new NumberPrompter({ numberGenerator: changingNumberGenerator, numberView });
   const numberPromptTrigger = new NumberPromptTrigger({ numberPrompter });
 
-  new PromptIntervalSettingsView({
-    containerElement: document.querySelector('#section-prompt-interval-settings'),
+  new PromptTriggerSettingsView({
+    containerElement: document.querySelector('#section-prompt-trigger-settings'),
     initialPromptInterval: INITIAL_PROMPT_INTERVAL,
     onPromptIntervalSelected: (promptInterval) => numberPromptTrigger.triggerPeriodically(promptInterval) });
 
