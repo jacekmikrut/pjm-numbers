@@ -3,6 +3,24 @@ $gray-2: #999;
 $gray-3: #ddd;
 $gray-4: #fff;
 
+@mixin setting-button {
+  width: 50px;
+  min-width: 50px;
+  margin: 3px;
+  background-color: $gray-3;
+  border: solid 2px $gray-3;
+  border-radius: 8px;
+  color: $gray-2;
+  font-size: 14px;
+  padding: 3px 7px;
+
+  &.selected {
+    color: $gray-4;
+    background-color: $gray-2;
+    border-color: $gray-2;
+  }
+}
+
 html, body {
   margin: 0;
   height: 100%;
@@ -52,7 +70,17 @@ nav {
 
 #help-page {
   padding: 2rem;
-  font-size: 2rem;
+  font-size: 14px;
+
+  p {
+    line-height: 2.5em;
+  }
+
+  button {
+    @include setting-button;
+    display: inline-block;
+    width: auto;
+  }
 }
 
 .page {
@@ -129,20 +157,7 @@ nav {
   }
 
   button {
-    width: 50px;
-    margin: 3px;
-    background-color: $gray-3;
-    border: solid 2px $gray-3;
-    border-radius: 8px;
-    color: $gray-2;
-    font-size: 14px;
-    padding: 3px;
-
-    &.selected {
-      color: $gray-4;
-      background-color: $gray-2;
-      border-color: $gray-2;
-    }
+    @include setting-button;
   }
 
   button[data-prompt-trigger-type=manual] {
