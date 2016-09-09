@@ -83,10 +83,25 @@ nav {
   }
 }
 
+#settings-page {
+  width: 100%;
+  min-height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 14px;
+
+  p {
+    line-height: 2.5em;
+  }
+}
+
 .page {
 
   &:not(.active) {
-    display: none;
+    display: none !important;
   }
 
   .close-link {
@@ -147,10 +162,6 @@ nav {
       border-color: $gray-2;
     }
   }
-}
-
-#section-settings {
-  float: right;
 }
 
 #section-prompt-trigger-settings,
