@@ -9,7 +9,7 @@
 </head>
 <body>
   <section id="exercise-page" class="page active">
-    <nav>
+    <nav class="main-menu">
       <ul>
         <li><a href="#settings-page" class="page-link">Ustawienia</a></li>
         <li><a href="#help-page" class="page-link">Pomoc</a></li>
@@ -29,7 +29,6 @@
   <section id="settings-page" class="page">
 
     <section id="section-settings">
-      <a href="#exercise-page" class="page-link close-link">&#x2715;</a>
       <section id="section-prompt-trigger-settings">
         <button data-prompt-trigger-type="interval" data-prompt-trigger-value=" 1000" data-tooltip="Zmieniaj liczby co 1 sekundę">1s</button>
         <button data-prompt-trigger-type="interval" data-prompt-trigger-value=" 1500" data-tooltip="Zmieniaj liczby co 1.5 sekundy">1.5s</button>
@@ -78,6 +77,10 @@
           <button data-number="90" data-tooltip="Włącz/wyłącz pokazywanie liczb od 90 do 99">9x</button>
         </section>
       </section>
+
+      <nav>
+        <a href="#exercise-page" class="page-link close-link">Zamknij</a>
+      </nav>
     </section>
   </section>
 
