@@ -8,6 +8,7 @@ const NumberPrompter      = require('./number-prompter.js');
 const PromptTriggerManualStrategy   = require('./prompt-trigger-manual-strategy.js');
 const PromptTriggerIntervalStrategy = require('./prompt-trigger-interval-strategy.js');
 const NumberPromptTrigger = require('./number-prompt-trigger.js');
+const NumbersPoolDependentNumberPromptTrigger = require('./numbers-pool-dependent-number-prompt-trigger.js');
 const PromptTriggerType   = require('./prompt-trigger-type.js');
 const PromptTriggerData   = require('./prompt-trigger-data.js');
 const PromptTriggerSettingsView = require('./prompt-trigger-settings-view.js');
@@ -25,7 +26,8 @@ function init() {
     pageElements:     document.querySelectorAll('.page')
   });
   const numberSettingsToPoolConverter = new NumberSettingsToPoolConverter();
-  const numberGenerator = new NumberGenerator({ numbersPool: numberSettingsToPoolConverter.convert(INITIALLY_SELECTED_NUMBERS) });
+  const initialNumbersPool = numberSettingsToPoolConverter.convert(INITIALLY_SELECTED_NUMBERS);
+  const numberGenerator = new NumberGenerator({ numbersPool: initialNumbersPool });
   const changingNumberGenerator = new ChangingNumberGenerator({ numberGenerator });
   const numberView = new NumberView({
     numberElement: document.querySelector('#section-number'),
@@ -49,6 +51,11 @@ function init() {
     onClick: () => numberPromptTrigger.triggerNow()
   });
 
+  const numbersPoolDependentNumberPromptTrigger = new NumbersPoolDependentNumberPromptTrigger({
+    numberPromptTrigger,
+    numbersPool: initialNumbersPool
+  });
+
   new PromptTriggerSettingsView({
     containerElement: document.querySelector('#section-prompt-trigger-settings'),
     initialPromptTriggerData,
@@ -64,7 +71,10 @@ function init() {
     numberSettingsView,
     selectedNumbers: INITIALLY_SELECTED_NUMBERS,
     numberSettingsToPoolConverter,
-    onNumberSelectionChange: (numbersPool) => changingNumberGenerator.setNumbersPool(numbersPool)
+    onNumberSelectionChange: (numbersPool) => {
+      changingNumberGenerator.setNumbersPool(numbersPool);
+      numbersPoolDependentNumberPromptTrigger.learnThatNumbersPoolWasSelected(numbersPool);
+    }
   });
 
   numberPromptTrigger.triggerNow();
