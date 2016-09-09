@@ -3,9 +3,7 @@ $gray-2: #999;
 $gray-3: #ddd;
 $gray-4: #fff;
 
-@mixin setting-button {
-  width: 50px;
-  min-width: 50px;
+@mixin button {
   margin: 3px;
   background-color: $gray-3;
   border: solid 2px $gray-3;
@@ -13,6 +11,14 @@ $gray-4: #fff;
   color: $gray-2;
   font-size: 14px;
   padding: 3px 7px;
+  text-decoration: none;
+}
+
+@mixin setting-button {
+  @include button;
+
+  width: 50px;
+  min-width: 50px;
 
   &.selected {
     color: $gray-4;
@@ -105,8 +111,8 @@ nav {
   }
 
   .close-link {
+    @include button;
     float: right;
-    color: $gray-2;
   }
 }
 
