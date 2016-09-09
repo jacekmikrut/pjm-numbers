@@ -1,11 +1,19 @@
 class NumberView {
 
-  constructor(element) {
-    this.element = element;
+  constructor({ numberElement, emptyNumbersPoolInfoElement }) {
+    this.numberElement = numberElement;
+    this.emptyNumbersPoolInfoElement = emptyNumbersPoolInfoElement;
   }
 
-  update(number) {
-    this.element.textContent = number;
+  showNumber(number) {
+    this.emptyNumbersPoolInfoElement.classList.add('hidden');
+    this.numberElement.textContent = number;
+    this.numberElement.classList.remove('hidden');
+  }
+
+  showEmptyNumbersPoolInfo() {
+    this.numberElement.classList.add('hidden');
+    this.emptyNumbersPoolInfoElement.classList.remove('hidden');
   }
 }
 

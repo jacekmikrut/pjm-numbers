@@ -27,7 +27,10 @@ function init() {
   const numberSettingsToPoolConverter = new NumberSettingsToPoolConverter();
   const numberGenerator = new NumberGenerator({ numbersPool: numberSettingsToPoolConverter.convert(INITIALLY_SELECTED_NUMBERS) });
   const changingNumberGenerator = new ChangingNumberGenerator({ numberGenerator });
-  const numberView = new NumberView(document.querySelector('#section-number'));
+  const numberView = new NumberView({
+    numberElement: document.querySelector('#section-number'),
+    emptyNumbersPoolInfoElement: document.querySelector('#section-empty-numbers-pool-info')
+  });
   const numberPrompter = new NumberPrompter({ numberGenerator: changingNumberGenerator, numberView });
   const manualPromptTriggerSectionView = new ManualPromptTriggerSectionView({
     element: document.querySelector('#section-manual-prompt-trigger')

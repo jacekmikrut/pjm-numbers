@@ -103,13 +103,21 @@ nav {
   flex-direction: column;
 }
 
-#section-number {
+#section-number,
+#section-empty-numbers-pool-info {
   height: 70%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30vw;
   color: $gray-1;
+}
+
+#section-number {
+  font-size: 30vw;
+}
+
+#section-empty-numbers-pool-info {
+  font-size: 2em;
 }
 
 #section-manual-prompt-trigger {
@@ -190,4 +198,8 @@ button[data-tooltip] {
       border-radius: inherit;
     }
   }
+}
+
+.hidden {
+  display: none !important;
 }
