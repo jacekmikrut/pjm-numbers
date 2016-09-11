@@ -3,99 +3,142 @@
 <head>
   <title>PJM Nauka Liczb</title>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <script src="index.js"></script>
   <link href="index.css" rel="stylesheet">
 </head>
 <body>
   <section id="exercise-page" class="page active">
-    <nav class="main-menu">
-      <ul>
-        <li><a href="#settings-page" class="page-link">Ustawienia</a></li>
-        <li><a href="#help-page" class="page-link">Pomoc</a></li>
-      </ul>
-    </nav>
-    <section id="section-number-and-manual-trigger">
+    <header class="page-header">
+      <nav>
+        <ul>
+          <li><a href="#settings-page" class="page-link">Ustawienia</a></li>
+          <li><a href="#help-page" class="page-link">Pomoc</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="section-number-and-manual-trigger" class="page-body">
       <section id="section-number"></section>
       <section id="section-empty-numbers-pool-info">
         <p>Brak liczb do wyświetlenia</p>
       </section>
+    </section>
+
+    <footer class="page-footer">
       <section id="section-manual-prompt-trigger">
         <button>Pokaż następną liczbę</button>
       </section>
-    </section>
+    </footer>
   </section>
 
   <section id="settings-page" class="page">
+    <header class="page-header">
+      <nav>
+        <ul>
+          <li><a href="#exercise-page" class="page-link close-link">&#x2715;</a></li>
+        </ul>
+      </nav>
+    </header>
 
-    <section id="section-settings">
+    <section class="page-body">
+      <h1>Ustawienia</h1>
+
       <section id="section-prompt-trigger-settings">
-        <button data-prompt-trigger-type="interval" data-prompt-trigger-value=" 1000" data-tooltip="Zmieniaj liczby co 1 sekundę">1s</button>
-        <button data-prompt-trigger-type="interval" data-prompt-trigger-value=" 1500" data-tooltip="Zmieniaj liczby co 1.5 sekundy">1.5s</button>
-        <button data-prompt-trigger-type="interval" data-prompt-trigger-value=" 2000" data-tooltip="Zmieniaj liczby co 2 sekundy">2s</button>
-        <button data-prompt-trigger-type="interval" data-prompt-trigger-value=" 3000" data-tooltip="Zmieniaj liczby co 3 sekundy">3s</button>
-        <button data-prompt-trigger-type="interval" data-prompt-trigger-value=" 5000" data-tooltip="Zmieniaj liczby co 5 sekund">5s</button>
-        <button data-prompt-trigger-type="interval" data-prompt-trigger-value="10000" data-tooltip="Zmieniaj liczby co 10 sekund">10s</button>
-        <button data-prompt-trigger-type="manual"                                     data-tooltip="Zmieniaj liczby przyciskiem">Ręcznie</button>
+        <h3>Prędkość wyświetlania</h3>
+
+        <section class="buttons-group">
+          <button data-prompt-trigger-type="interval" data-prompt-trigger-value=" 1000">1s</button>
+          <button data-prompt-trigger-type="interval" data-prompt-trigger-value=" 1500">1.5s</button>
+          <button data-prompt-trigger-type="interval" data-prompt-trigger-value=" 2000">2s</button>
+          <button data-prompt-trigger-type="interval" data-prompt-trigger-value=" 3000">3s</button>
+          <button data-prompt-trigger-type="interval" data-prompt-trigger-value=" 5000">5s</button>
+          <button data-prompt-trigger-type="interval" data-prompt-trigger-value="10000">10s</button>
+          <button data-prompt-trigger-type="manual">Ręcznie</button>
+        </section>
       </section>
 
       <section id="section-number-settings">
-        <section>
-          <button data-number="0" data-tooltip="Włącz/wyłącz pokazywanie liczby 0">0</button>
-          <button data-number="1" data-tooltip="Włącz/wyłącz pokazywanie liczby 1">1</button>
-          <button data-number="2" data-tooltip="Włącz/wyłącz pokazywanie liczby 2">2</button>
-          <button data-number="3" data-tooltip="Włącz/wyłącz pokazywanie liczby 3">3</button>
-          <button data-number="4" data-tooltip="Włącz/wyłącz pokazywanie liczby 4">4</button>
-          <button data-number="5" data-tooltip="Włącz/wyłącz pokazywanie liczby 5">5</button>
-          <button data-number="6" data-tooltip="Włącz/wyłącz pokazywanie liczby 6">6</button>
-          <button data-number="7" data-tooltip="Włącz/wyłącz pokazywanie liczby 7">7</button>
-          <button data-number="8" data-tooltip="Włącz/wyłącz pokazywanie liczby 8">8</button>
-          <button data-number="9" data-tooltip="Włącz/wyłącz pokazywanie liczby 9">9</button>
+        <h3>Liczby</h3>
+
+        <section class="buttons-group">
+          <button data-number="0">0</button>
+          <button data-number="1">1</button>
+          <button data-number="2">2</button>
+          <button data-number="3">3</button>
+          <button data-number="4">4</button>
+          <button data-number="5">5</button>
+          <button data-number="6">6</button>
+          <button data-number="7">7</button>
+          <button data-number="8">8</button>
+          <button data-number="9">9</button>
         </section>
 
-        <section>
-          <button data-number="10" data-tooltip="Włącz/wyłącz pokazywanie liczby 10">10</button>
-          <button data-number="11" data-tooltip="Włącz/wyłącz pokazywanie liczby 11">11</button>
-          <button data-number="12" data-tooltip="Włącz/wyłącz pokazywanie liczby 12">12</button>
-          <button data-number="13" data-tooltip="Włącz/wyłącz pokazywanie liczby 13">13</button>
-          <button data-number="14" data-tooltip="Włącz/wyłącz pokazywanie liczby 14">14</button>
-          <button data-number="15" data-tooltip="Włącz/wyłącz pokazywanie liczby 15">15</button>
-          <button data-number="16" data-tooltip="Włącz/wyłącz pokazywanie liczby 16">16</button>
-          <button data-number="17" data-tooltip="Włącz/wyłącz pokazywanie liczby 17">17</button>
-          <button data-number="18" data-tooltip="Włącz/wyłącz pokazywanie liczby 18">18</button>
-          <button data-number="19" data-tooltip="Włącz/wyłącz pokazywanie liczby 19">19</button>
+        <section class="buttons-group">
+          <button data-number="10">10</button>
+          <button data-number="11">11</button>
+          <button data-number="12">12</button>
+          <button data-number="13">13</button>
+          <button data-number="14">14</button>
+          <button data-number="15">15</button>
+          <button data-number="16">16</button>
+          <button data-number="17">17</button>
+          <button data-number="18">18</button>
+          <button data-number="19">19</button>
         </section>
 
-        <section>
-          <button data-number="20" data-tooltip="Włącz/wyłącz pokazywanie liczb od 20 do 29">2x</button>
-          <button data-number="30" data-tooltip="Włącz/wyłącz pokazywanie liczb od 30 do 39">3x</button>
-          <button data-number="40" data-tooltip="Włącz/wyłącz pokazywanie liczb od 40 do 49">4x</button>
-          <button data-number="50" data-tooltip="Włącz/wyłącz pokazywanie liczb od 50 do 59">5x</button>
-          <button data-number="60" data-tooltip="Włącz/wyłącz pokazywanie liczb od 60 do 69">6x</button>
-          <button data-number="70" data-tooltip="Włącz/wyłącz pokazywanie liczb od 70 do 79">7x</button>
-          <button data-number="80" data-tooltip="Włącz/wyłącz pokazywanie liczb od 80 do 89">8x</button>
-          <button data-number="90" data-tooltip="Włącz/wyłącz pokazywanie liczb od 90 do 99">9x</button>
+        <section class="buttons-group buttons-20-90">
+          <button data-number="20">2x</button>
+          <button data-number="30">3x</button>
+          <button data-number="40">4x</button>
+          <button data-number="50">5x</button>
+          <button data-number="60">6x</button>
+          <button data-number="70">7x</button>
+          <button data-number="80">8x</button>
+          <button data-number="90">9x</button>
         </section>
       </section>
-
-      <nav>
-        <a href="#exercise-page" class="page-link close-link">Zamknij</a>
-      </nav>
     </section>
+
+    <footer class="page-footer">
+      <nav>
+        <ul>
+          <li><a href="#exercise-page" class="page-link close-link">Zamknij</a></li>
+        </ul>
+      </nav>
+    </footer>
   </section>
 
   <section id="help-page" class="page">
-    <a href="#exercise-page" class="page-link close-link">&#x2715;</a>
-    <h1>Pomoc</h1>
-    <p>Ta strona internetowa służy do nauki znaków liczb w <strong>Polskim Języku Migowym</strong>. Nauka polega na pokazywaniu przez użytkownika znaków liczb losowo wyświetlanych na ekranie. Użytkownik może wybrać które liczby będą wyświetlane oraz jak często będą się zmieniać.</p>
+    <header class="page-header">
+      <nav>
+        <ul>
+          <li><a href="#exercise-page" class="page-link close-link">&#x2715;</a></li>
+        </ul>
+      </nav>
+    </header>
 
-    <h3>Wybór prędkości wyświetlania liczb</h3>
-    <p>Użytkownik może zmieniać prędkość pokazywania kolejnych liczb za pomocą znajdujących się w prawym górnym rogu przycisków <button disabled="disabled">1s</button><button disabled="disabled">1.5s</button> ... <button disabled="disabled">10s</button> które odpowiadają prędkości wyświetlania co 1 sekundę, co 1.5 sekundy, aż do 10 sekund. Można też wybrać ręczne przełączanie kolejnych liczb za pomocą przycisku <button disabled="disabled">Ręcznie</button>. Wówczas w dolnej części ekranu pojawi się przycisk <button disabled="disabled">Pokaż następną liczbę</button> i kolejne liczby będą pokazywane dopiero po naciśnięciu tego przycisku.</p>
+    <section class="page-body">
+      <h1>Pomoc</h1>
+      <p>Ta strona internetowa służy do nauki znaków liczb w <strong>Polskim Języku Migowym</strong>. Nauka polega na pokazywaniu przez użytkownika znaków liczb losowo wyświetlanych na ekranie. Użytkownik może wybrać które liczby będą wyświetlane oraz jak często będą się zmieniać.</p>
 
-    <h3>Wybór liczb do wyświetlania</h3>
-    <p>Przyciski <button disabled="disabled">0</button><button disabled="disabled">1</button> ... <button disabled="disabled">19</button> włączają/wyłączają pokazywanie liczb od 0 do 19, natomiast wyświetlanie liczb z zakresu od 20 do 99 ustawia się za pomocą przycisków <button disabled="disabled">2x</button><button disabled="disabled">3x</button> ... <button disabled="disabled">9x</button> w połączeniu z przyciskami <button disabled="disabled">0</button><button disabled="disabled">1</button> ... <button disabled="disabled">9</button>. Przykładowo, jeśli wciśnięty zostanie przycisk <button disabled="disabled">2x</button> oraz <button disabled="disabled">0</button> i <button disabled="disabled">1</button>, a przyciski od <button disabled="disabled">2</button> do <button disabled="disabled">9</button> nie, wówczas spośród liczb 20 - 29 wyświetlane będą tylko liczby 20 i 21.</p>
+      <h3>Wybór prędkości wyświetlania liczb</h3>
+      <p>Użytkownik może zmieniać prędkość pokazywania kolejnych liczb za pomocą znajdujących się w prawym górnym rogu przycisków <span class="fake-button">1s</span><span class="fake-button">1.5s</span> ... <span class="fake-button">10s</span> które odpowiadają prędkości wyświetlania co 1 sekundę, co 1.5 sekundy, aż do 10 sekund. Można też wybrać ręczne przełączanie kolejnych liczb za pomocą przycisku <span class="fake-button">Ręcznie</span>. Wówczas w dolnej części ekranu pojawi się przycisk <span class="fake-button">Pokaż następną liczbę</span> i kolejne liczby będą pokazywane dopiero po naciśnięciu tego przycisku.</p>
 
-    <p><strong>Miłej i owocnej nauki!</strong></p>
+      <h3>Wybór liczb do wyświetlania</h3>
+      <p>Przyciski <span class="fake-button">0</span><span class="fake-button">1</span> ... <span class="fake-button">19</span> włączają/wyłączają pokazywanie liczb od 0 do 19, natomiast wyświetlanie liczb z zakresu od 20 do 99 ustawia się za pomocą przycisków <span class="fake-button">2x</span><span class="fake-button">3x</span> ... <span class="fake-button">9x</span> w połączeniu z przyciskami <span class="fake-button">0</span><span class="fake-button">1</span> ... <span class="fake-button">9</span>. Przykładowo, jeśli wciśnięty zostanie przycisk <span class="fake-button">2x</span> oraz <span class="fake-button">0</span> i <span class="fake-button">1</span>, a przyciski od <span class="fake-button">2</span> do <span class="fake-button">9</span> nie, wówczas spośród liczb 20 - 29 wyświetlane będą tylko liczby 20 i 21.</p>
+
+      <p><strong>Miłej i owocnej nauki!</strong></p>
+    </section>
+
+    <footer class="page-footer">
+      <nav>
+        <ul>
+          <li><a href="#exercise-page" class="page-link close-link">Zamknij</a></li>
+        </ul>
+      </nav>
+    </footer>
   </section>
 </body>
 </html>
