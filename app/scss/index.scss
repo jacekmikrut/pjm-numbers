@@ -78,7 +78,16 @@ nav {
   }
 
   li {
-    display: inline-block;
+    display: block;
+    float: left;
+
+    + li {
+      margin-left: 0.5em;
+    }
+  }
+
+  a {
+    min-width: 2em;
   }
 }
 
@@ -86,25 +95,32 @@ nav {
   display: none !important;
 }
 
-@media (max-width: 700px), (max-width: 1400px) and (min-resolution: 2dppx) {
-  #exercise-page {
-    nav {
+#main-menu:not(.active) {
+  li:not(.toggle-link) {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  #main-menu.active {
+    float: none;
+
+    ul {
+      display: block;
+    }
+
+    li {
+      margin-left: 0;
+      display: list-item;
       float: none;
+    }
 
-      ul {
-        display: inherit;
-      }
-      li {
-        display: list-item;
+    a {
+      display: block;
+    }
 
-        + li {
-          margin-top: 0.5em;
-        }
-      }
-
-      a {
-        display: block;
-      }
+    li:not(.toggle-link) {
+      margin-bottom: 0.5em;
     }
   }
 }
@@ -159,6 +175,10 @@ nav {
   .page-footer {
     max-width: 800px * 1.3;
   }
+}
+
+.page-header {
+  z-index: 100;
 }
 
 .page-body {
@@ -289,4 +309,24 @@ nav {
       flex-basis: 25%;
     }
   }
+}
+
+.menu-link {
+  @include button;
+}
+
+.menu-icon {
+  position: relative;
+  padding-left: 1em;
+}
+
+.menu-icon:before {
+  content: "";
+  position: absolute;
+  top: 0.25em;
+  left: 0;
+  width: 1em;
+  height: 0.125em;
+  border-top: 0.375em double $gray-2;
+  border-bottom: 0.125em solid $gray-2;
 }
