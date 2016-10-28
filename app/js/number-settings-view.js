@@ -2,18 +2,18 @@ const NumberButtonView = require('./number-button-view.js');
 
 class NumberSettingsView {
 
-  constructor({ containerElement, onNumberSelected, onNumberUnselected }) {
-    this.onNumberSelected   = onNumberSelected;
-    this.onNumberUnselected = onNumberUnselected;
+  constructor({ containerElement, onNumberPatternSelected, onNumberPatternUnselected }) {
+    this.onNumberPatternSelected   = onNumberPatternSelected;
+    this.onNumberPatternUnselected = onNumberPatternUnselected;
 
     this.numberButtonViews = Array.from(containerElement.querySelectorAll('button')).map((buttonElement) => {
       return new NumberButtonView({ buttonElement, onClick: (numberButtonView) => this.onNumberButtonClicked(numberButtonView) });
     });
   }
 
-  update(selectedNumbersSet) {
+  update(selectedNumberPatternsSet) {
     for (const numberButtonView of this.numberButtonViews) {
-      if (selectedNumbersSet.has(numberButtonView.number)) {
+      if (selectedNumberPatternsSet.has(numberButtonView.numberPattern)) {
         numberButtonView.setSelected();
       }
       else {
@@ -24,10 +24,10 @@ class NumberSettingsView {
 
   onNumberButtonClicked(clickedNumberButtonView) {
     if (clickedNumberButtonView.isSelected()) {
-      this.onNumberUnselected(clickedNumberButtonView.number);
+      this.onNumberPatternUnselected(clickedNumberButtonView.numberPattern);
     }
     else {
-      this.onNumberSelected(clickedNumberButtonView.number);
+      this.onNumberPatternSelected(clickedNumberButtonView.numberPattern);
     }
   }
 }

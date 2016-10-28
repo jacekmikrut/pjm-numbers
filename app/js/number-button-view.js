@@ -2,7 +2,7 @@ class NumberButtonView {
 
   constructor({ buttonElement, onClick }) {
     this.buttonElement = buttonElement;
-    this.number = Number(this.buttonElement.getAttribute('data-number'));
+    this.numberPattern = this.buttonElement.getAttribute('data-number-pattern');
     this.buttonElement.addEventListener('click', () => { this.buttonElement.blur(); onClick(this); });
   }
 

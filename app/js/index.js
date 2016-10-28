@@ -19,7 +19,10 @@ const NumberSettingsView  = require('./number-settings-view.js');
 
 const INITIAL_PROMPT_TRIGGER_TYPE = PromptTriggerType.INTERVAL;
 const INITIAL_PROMPT_TRIGGER_VALUE = 3000;
-const INITIALLY_SELECTED_NUMBERS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 30, 40, 50, 60, 70, 80, 90];
+const INITIALLY_SELECTED_NUMBER_PATTERNS = [
+   '0',  '1',  '2',  '3',  '4',  '5',  '6',  '7',  '8',  '9',
+  '10', '11', '12', '13', '14', '15', '16', '17', '18', '19',
+              '2x', '3x', '4x', '5x', '6x', '7x', '8x', '9x' ];
 
 function init() {
   new MenuView({
@@ -30,7 +33,7 @@ function init() {
     pageElements:     document.querySelectorAll('.page')
   });
   const numberSettingsToPoolConverter = new NumberSettingsToPoolConverter();
-  const initialNumbersPool = numberSettingsToPoolConverter.convert(INITIALLY_SELECTED_NUMBERS);
+  const initialNumbersPool = numberSettingsToPoolConverter.convert(INITIALLY_SELECTED_NUMBER_PATTERNS);
   const numberGenerator = new NumberGenerator({ numbersPool: initialNumbersPool });
   const changingNumberGenerator = new ChangingNumberGenerator({ numberGenerator });
   const numberView = new NumberView({
@@ -67,13 +70,13 @@ function init() {
 
   const numberSettingsView = new NumberSettingsView({
     containerElement: document.querySelector('#section-number-settings'),
-    onNumberSelected:   (number) => numberSettings.onNumberSelected(number),
-    onNumberUnselected: (number) => numberSettings.onNumberUnselected(number)
+    onNumberPatternSelected: (numberPattern) => numberSettings.onNumberPatternSelected(numberPattern),
+    onNumberPatternUnselected: (numberPattern) => numberSettings.onNumberPatternUnselected(numberPattern)
   });
 
   const numberSettings = new NumberSettings({
     numberSettingsView,
-    selectedNumbers: INITIALLY_SELECTED_NUMBERS,
+    selectedNumberPatterns: INITIALLY_SELECTED_NUMBER_PATTERNS,
     numberSettingsToPoolConverter,
     onNumberSelectionChange: (numbersPool) => {
       changingNumberGenerator.setNumbersPool(numbersPool);
