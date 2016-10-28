@@ -1,4 +1,4 @@
-class NumberButtonView {
+class NumberPatternButtonView {
 
   constructor({ buttonElement, onClick }) {
     this.buttonElement = buttonElement;
@@ -19,4 +19,4 @@ class NumberButtonView {
   }
 }
 
-module.exports = NumberButtonView;
+module.exports = NumberPatternButtonView;
