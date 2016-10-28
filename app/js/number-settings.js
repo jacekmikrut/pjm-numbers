@@ -1,9 +1,9 @@
 class NumberSettings {
 
-  constructor({ numberSettingsView, selectedNumberPatterns, numberSettingsToPoolConverter, onNumberSelectionChange }) {
+  constructor({ numberSettingsView, selectedNumberPatterns, numberPatternsToPoolConverter, onNumberSelectionChange }) {
     this.selectedNumberPatternsSet = new Set(selectedNumberPatterns);
     this.numberSettingsView = numberSettingsView;
-    this.numberSettingsToPoolConverter = numberSettingsToPoolConverter;
+    this.numberPatternsToPoolConverter = numberPatternsToPoolConverter;
     this.onNumberSelectionChange = onNumberSelectionChange;
 
     this.notifyObservers();
@@ -25,7 +25,7 @@ class NumberSettings {
   }
 
   numbersPool() {
-    return this.numberSettingsToPoolConverter.convert(this.selectedNumberPatternsSet);
+    return this.numberPatternsToPoolConverter.convert(this.selectedNumberPatternsSet);
   }
 }
 

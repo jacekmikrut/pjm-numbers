@@ -1,4 +1,4 @@
-class NumberSettingsToPoolConverter {
+class NumberPatternsToPoolConverter {
 
   convert(selectedNumberPatternsSet) {
     const selectedNumbersFrom000To009 = this._generateNumbersFrom000To009(selectedNumberPatternsSet);
@@ -29,4 +29,4 @@ class NumberSettingsToPoolConverter {
   }
 }
 
-module.exports = NumberSettingsToPoolConverter;
+module.exports = NumberPatternsToPoolConverter;

@@ -1,6 +1,6 @@
 const MenuView                      = require('./menu-view.js');
 const PageSwitch                    = require('./page-switch.js');
-const NumberSettingsToPoolConverter = require('./number-settings-to-pool-converter.js');
+const NumberPatternsToPoolConverter = require('./number-patterns-to-pool-converter.js');
 const NumberGenerator     = require('./number-generator.js');
 const ChangingNumberGenerator = require('./changing-number-generator.js');
 const NumberView          = require('./number-view.js');
@@ -32,8 +32,8 @@ function init() {
     pageLinkElements: document.querySelectorAll('.page-link'),
     pageElements:     document.querySelectorAll('.page')
   });
-  const numberSettingsToPoolConverter = new NumberSettingsToPoolConverter();
-  const initialNumbersPool = numberSettingsToPoolConverter.convert(INITIALLY_SELECTED_NUMBER_PATTERNS);
+  const numberPatternsToPoolConverter = new NumberPatternsToPoolConverter();
+  const initialNumbersPool = numberPatternsToPoolConverter.convert(INITIALLY_SELECTED_NUMBER_PATTERNS);
   const numberGenerator = new NumberGenerator({ numbersPool: initialNumbersPool });
   const changingNumberGenerator = new ChangingNumberGenerator({ numberGenerator });
   const numberView = new NumberView({
@@ -77,7 +77,7 @@ function init() {
   const numberSettings = new NumberSettings({
     numberSettingsView,
     selectedNumberPatterns: INITIALLY_SELECTED_NUMBER_PATTERNS,
-    numberSettingsToPoolConverter,
+    numberPatternsToPoolConverter,
     onNumberSelectionChange: (numbersPool) => {
       changingNumberGenerator.setNumbersPool(numbersPool);
       numbersPoolDependentNumberPromptTrigger.learnThatNumbersPoolWasSelected(numbersPool);
