@@ -1,3 +1,4 @@
+const NumberToStringConverter       = require('./number-to-string-converter.js');
 const MenuView                      = require('./menu-view.js');
 const PageSwitch                    = require('./page-switch.js');
 const NumberPatternsToPoolConverter = require('./number-patterns-to-pool-converter.js');
@@ -22,7 +23,8 @@ const INITIAL_PROMPT_TRIGGER_VALUE = 3000;
 const INITIALLY_SELECTED_NUMBER_PATTERNS = [
    '0',  '1',  '2',  '3',  '4',  '5',  '6',  '7',  '8',  '9',
   '10', '11', '12', '13', '14', '15', '16', '17', '18', '19',
-              '2x', '3x', '4x', '5x', '6x', '7x', '8x', '9x' ];
+              '2x', '3x', '4x', '5x', '6x', '7x', '8x', '9x',
+  '0xx', '1xx', '2xx', '3xx', '4xx', '5xx', '6xx', '7xx', '8xx', '9xx' ];
 
 function init() {
   new MenuView({
@@ -32,7 +34,8 @@ function init() {
     pageLinkElements: document.querySelectorAll('.page-link'),
     pageElements:     document.querySelectorAll('.page')
   });
-  const numberPatternsToPoolConverter = new NumberPatternsToPoolConverter();
+  const numberToStringConverter = new NumberToStringConverter();
+  const numberPatternsToPoolConverter = new NumberPatternsToPoolConverter({ numberToStringConverter });
   const initialNumbersPool = numberPatternsToPoolConverter.convert(INITIALLY_SELECTED_NUMBER_PATTERNS);
   const numberGenerator = new NumberGenerator({ numbersPool: initialNumbersPool });
   const changingNumberGenerator = new ChangingNumberGenerator({ numberGenerator });

@@ -226,13 +226,13 @@ nav {
 
 @media (orientation: landscape) {
   #section-number {
-    font-size: 60vh;
+    font-size: 50vh;
   }
 }
 
 @media (orientation: portrait) {
   #section-number {
-    font-size: 60vw;
+    font-size: 50vw;
   }
 }
 
@@ -273,6 +273,10 @@ nav {
   &.buttons-20-90 {
     margin-top: 0.5em;
     margin-left: 20%;
+  }
+
+  &.buttons-0xx-9xx {
+    margin-top: 0.5em;
   }
 
   button {
